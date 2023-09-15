@@ -1,6 +1,6 @@
 <?php
 class thepiratebay implements ISite, ISearch {
-    const SITE = "https://thepiratebay.rocks"; // use a proxy because thepiratebay.org go into localhost in my QNAP.
+    const SITE = "https://thepiratebay10.info"; // use a proxy because thepiratebay.org go into localhost in my QNAP.
     private $url;
 
     /*
@@ -47,8 +47,9 @@ class thepiratebay implements ISite, ISearch {
                 "`<tr.*" .
                     "<td.*<a.*>(?P<category>.*)</a>.*</td>.*" .
                     "<td.*<a href=\"(?P<descriptionLink>.*)\".*>(?P<name>.*)</a>.*" .
+                    "<td>(?P<time>.*)</td>.*" .
                     "<a href=\"(?P<link>magnet:.*)\".*</a>.*" .
-                    "Uploaded (?P<time>.*), Size (?P<size>.*)&nbsp;(?P<unit>[a-zA-Z]*),.*</td>.*" .
+                    "<td.*>(?P<size>\d+)(\.\d+)?&nbsp;(?P<unit>[a-zA-Z]*)</td>.*" .
                     "<td.*>(?P<seeds>\d+)</td>.*" .
                     "<td.*>(?P<leechers>\d+)</td>.*" .
                 "</tr>.*`siU",
